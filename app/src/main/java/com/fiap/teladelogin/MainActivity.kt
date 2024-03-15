@@ -16,10 +16,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar!!.hide()
+        supportActionBar?.hide() // Verifica se a ActionBar não é nula antes de ocultá-la
         window.statusBarColor = Color.parseColor("#FFFFFF")
 
         binding.btEntrar.setOnClickListener{
@@ -27,30 +28,17 @@ class MainActivity : AppCompatActivity() {
             val email = binding.editEmail.text.toString()
             val senha = binding.editSenha.text.toString()
 
-            when{
-                email.isEmpty() -> {
-                    binding.editEmail.error = "Preencha o E-mail!"
-                }
-                senha.isEmpty() ->{
-                    binding.editSenha.error = "Preencha a senha!!"
-                }
-                !email.contains("@gmail.com") -> {
-                    val snackbar = Snackbar.make(it,"E-mail invalido!",Snackbar.LENGTH_SHORT)
-                    snackbar.show()
-                }
-                senha.length <= 5 -> {
-                    val snackbar = Snackbar.make(it,"A senha deve ter pelo menos 6 caracteres!",Snackbar.LENGTH_SHORT)
-                    snackbar.show()
-                }
-                else -> {
-                    login(it)
-                }
+            when {
+                email.isEmpty() -> binding.editEmail.error = "Preencha o E-mail!"
+                senha.isEmpty() -> binding.editSenha.error = "Preencha a senha!!"
+                !email.contains("@") -> mostrarSnackbar("E-mail inválido!")
+                senha.length <= 5 -> mostrarSnackbar("A senha deve ter pelo menos 6 caracteres!")
+                else -> login(it)
             }
-
         }
     }
-    private fun login(view: View){
 
+    private fun login(view: View) {
         val progressBar = binding.progressBar
         progressBar.visibility = View.VISIBLE
 
@@ -59,16 +47,17 @@ class MainActivity : AppCompatActivity() {
 
         Handler(Looper.getMainLooper()).postDelayed({
             navegarTelaPrincipal()
-            val snackbar = Snackbar.make(view, "Login efetuado com sucesso!", Snackbar.LENGTH_SHORT)
-            snackbar.show()
-        },3000)
+            mostrarSnackbar("Login efetuado com sucesso!")
+        }, 3000)
     }
 
-    private fun navegarTelaPrincipal(){
+    private fun navegarTelaPrincipal() {
+        val intent = Intent(this, TelaPrincipal::class.java)
+        startActivity(intent)
+    }
 
-        val indent = Intent(this,TelaPrincipal::class.java)
-        startActivity(indent)
-        finish()
-
+    private fun mostrarSnackbar(mensagem: String) {
+        val snackbar = Snackbar.make(binding.root, mensagem, Snackbar.LENGTH_SHORT)
+        snackbar.show()
     }
 }
