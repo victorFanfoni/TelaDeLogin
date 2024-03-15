@@ -8,6 +8,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import com.fiap.teladelogin.databinding.ActivityMainBinding
+import com.fiap.teladelogin.databinding.ActivityTelaPrincipalBinding
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
