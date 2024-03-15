@@ -18,7 +18,7 @@
         android:layout_marginStart="120dp"
         android:layout_marginTop="286dp"
         android:layout_marginEnd="56dp"
-        android:text="MultiAutoCompleteTextView" />
+        android:text="" />
 
     <MultiAutoCompleteTextView
         android:id="@+id/multiAutoCompleteTextView6"
@@ -30,7 +30,7 @@
         android:layout_marginStart="120dp"
         android:layout_marginTop="148dp"
         android:layout_marginEnd="57dp"
-        android:text="MultiAutoCompleteTextView" />
+        android:text="" />
 
     <MultiAutoCompleteTextView
         android:id="@+id/multiAutoCompleteTextView5"
@@ -42,7 +42,7 @@
         android:layout_marginStart="121dp"
         android:layout_marginTop="218dp"
         android:layout_marginEnd="55dp"
-        android:text="MultiAutoCompleteTextView" />
+        android:text="" />
 
     <Button
         android:id="@+id/btVoltar"
@@ -55,6 +55,8 @@
         android:layout_marginBottom="35dp"
         android:enabled="true"
         android:gravity="center"
+        android:background="@drawable/backgroud_button_finalizar"
+        android:drawableLeft="@drawable/ic_arrow"
         android:padding="15dp"
         android:text="Finalizar sessão"
         android:textSize="18sp"
@@ -80,7 +82,7 @@
         android:layout_marginStart="123dp"
         android:layout_marginTop="72dp"
         android:layout_marginEnd="54dp"
-        android:text="MultiAutoCompleteTextView" />
+        android:text="" />
 
     <TextView
         android:id="@+id/textView"
